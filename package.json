@@ -1,0 +1,23 @@
+{
+  "name": "briefly",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A pre-meeting briefing agent built on Tavily: a company or person and a meeting time in, a one-page sourced brief of the last 30 days out.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node src/server.ts",
+    "brief": "node src/cli.ts",
+    "demo": "node src/cli.ts --demo",
+    "eval": "node src/eval.ts",
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.8.0"
+  }
+}
