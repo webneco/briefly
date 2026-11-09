@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Briefly</title>
+<meta name="description" content="A one-page, sourced brief on who you are about to meet, covering the last 30 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <p class="mark">Briefly</p>
+  <p class="promise">Who you are meeting, what they did in the last 30 days, and where each line comes from.</p>
+</header>
+
+<main class="desk">
+  <section class="ask" aria-labelledby="ask-title">
+    <h1 id="ask-title">Who are you meeting?</h1>
+    <form id="form" novalidate>
+      <label for="subject">Company or person</label>
+      <input id="subject" name="subject" type="text" autocomplete="off" maxlength="120" placeholder="Razorpay" required>
+
+      <fieldset class="kind">
+        <legend>They are a</legend>
+        <label><input type="radio" name="kind" value="company" checked> <span>Company</span></label>
+        <label><input type="radio" name="kind" value="person"> <span>Person</span></label>
+      </fieldset>
+
+      <label for="meetingAt">Meeting date</label>
+      <input id="meetingAt" name="meetingAt" type="date" required>
+
+      <label for="purpose">What the meeting is for <span class="opt">optional</span></label>
+      <input id="purpose" name="purpose" type="text" autocomplete="off" maxlength="300" placeholder="Renewal call with their finance team">
+
+      <label for="hint">Anything that sets them apart from namesakes <span class="opt">optional</span></label>
+      <input id="hint" name="hint" type="text" autocomplete="off" maxlength="200" placeholder="The payments company in Bengaluru">
+
+      <div id="code-row" hidden>
+        <label for="code">Access code</label>
+        <input id="code" name="code" type="password" autocomplete="off">
+      </div>
+
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <button id="go" type="submit">Write the brief</button>
+      <button id="example" type="button" class="quiet" hidden>Show the recorded example</button>
+    </form>
+
+    <ol id="steps" class="steps" aria-live="polite" hidden></ol>
+  </section>
+
+  <section class="result" aria-label="Brief">
+    <div id="tools" class="tools" hidden>
+      <button type="button" id="print">Print or save as PDF</button>
+      <button type="button" id="save-md" class="quiet">Download Markdown</button>
+      <button type="button" id="save-html" class="quiet">Download this page</button>
+    </div>
+    <article id="sheet" class="sheet empty">
+      <p class="kicker">Briefing</p>
+      <h2 class="who">Your brief appears here</h2>
+      <p class="lede">One page. It covers the 30 days before today. Every line is checked against the page it cites before it is shown, and anything that fails the check is listed separately.</p>
+      <div class="ghost">
+        <h3>At a glance</h3><i></i><i></i>
+        <h3>Key developments</h3><i></i><i></i><i></i>
+        <h3>Talking points</h3><i></i><i></i>
+        <h3>Open questions</h3><i></i><i></i>
+        <h3>Not verified</h3><i></i>
+        <h3>Sources</h3><i></i><i></i>
+      </div>
+    </article>
+    <details id="how" class="how" hidden>
+      <summary>How this brief was made</summary>
+      <div id="how-body"></div>
+    </details>
+  </section>
+</main>
+</body>
+</html>
