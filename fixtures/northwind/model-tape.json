@@ -1,0 +1,367 @@
+{
+ "model": "claude-fable-5-2",
+ "replies": {
+  "3d56e86dfa56ede60c6ec950": {
+   "task": "pin",
+   "value": {
+    "name": "Northwind Robotics",
+    "summary": "Rotterdam-based maker of warehouse piece-picking robots, including the Picker 3, which raised a Series B led by Halden Ventures and opened a Rotterdam assembly factory.",
+    "domain": "northwindrobotics.example",
+    "aliases": [
+     "Northwind"
+    ],
+    "ambiguity": null
+   },
+   "tokensIn": 1266,
+   "tokensOut": 122
+  },
+  "4f1ae4270d03d6d06d3d98d3": {
+   "task": "plan",
+   "value": {
+    "queries": [
+     {
+      "query": "Northwind Robotics warehouse robotics Rotterdam news",
+      "angle": "news"
+     },
+     {
+      "query": "Northwind Robotics Picker 3 piece-picking robot launch",
+      "angle": "launch"
+     },
+     {
+      "query": "Northwind Robotics funding Series B Halden Ventures",
+      "angle": "money"
+     },
+     {
+      "query": "Northwind Robotics CEO executive hire appointment",
+      "angle": "people"
+     },
+     {
+      "query": "Northwind Robotics warehouse pilot customer partnership India",
+      "angle": "partners"
+     },
+     {
+      "query": "Northwind Robotics picking robot safety incident recall lawsuit",
+      "angle": "risk"
+     }
+    ]
+   },
+   "tokensIn": 429,
+   "tokensOut": 229
+  },
+  "89dcf8b4b0c3f82dcb272324": {
+   "task": "triage",
+   "value": {
+    "events": [
+     {
+      "headline": "Northwind Robotics to open Pune engineering and support office",
+      "date": "2026-11-01",
+      "category": "other",
+      "hits": [
+       "H4"
+      ],
+      "importance": 3
+     },
+     {
+      "headline": "Northwind launches Picker 3 piece-picking robot",
+      "date": "2026-11-03",
+      "category": "product",
+      "hits": [
+       "H3"
+      ],
+      "importance": 3
+     },
+     {
+      "headline": "Northwind raises Series B led by Halden Ventures; amount reported €40m–€45m",
+      "date": "2026-10-21",
+      "category": "money",
+      "hits": [
+       "H7",
+       "H8"
+      ],
+      "importance": 3
+     },
+     {
+      "headline": "Kestrel Freight signs three-year deal for 60 Northwind robots",
+      "date": "2026-11-05",
+      "category": "partners",
+      "hits": [
+       "H2"
+      ],
+      "importance": 2
+     },
+     {
+      "headline": "Dutch labour authority reviews worker injury at Northwind customer site",
+      "date": "2026-10-15",
+      "category": "risk",
+      "hits": [
+       "H9"
+      ],
+      "importance": 3
+     },
+     {
+      "headline": "Northwind appoints Ilse Verhoeven CFO, replacing Tomas Riedel",
+      "date": "2026-10-29",
+      "category": "people",
+      "hits": [
+       "H6"
+      ],
+      "importance": 2
+     },
+     {
+      "headline": "Unconfirmed rumour of early sale talks with Larchmont Industrial",
+      "date": "2026-11-07",
+      "category": "risk",
+      "hits": [
+       "H1"
+      ],
+      "importance": 2
+     }
+    ]
+   },
+   "tokensIn": 1713,
+   "tokensOut": 441
+  },
+  "d8890a799108dbb7d869f2d8": {
+   "task": "draft",
+   "value": {
+    "developments": [
+     {
+      "text": "Northwind plans to open an engineering and customer support office in Pune early next year, its first outside Europe, starting with about 25 staff, CEO Marit de Wolff told India Tech Ledger.",
+      "date": "2026-11-01",
+      "category": "other",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S2",
+        "quote": "Northwind Robotics plans to open an engineering and customer support office in Pune early next year, its first outside Europe, chief executive Marit de Wolff told India Tech Ledger."
+       },
+       {
+        "source": "S2",
+        "quote": "The office will start with about 25 staff."
+       }
+      ]
+     },
+     {
+      "text": "Northwind launched Picker 3, handling up to 1,100 picks per hour in customer-site tests versus 800 previously, with a gripper for soft packaging. Orders are open; first deliveries planned for January 2027.",
+      "date": "2026-11-03",
+      "category": "product",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S1",
+        "quote": "Picker 3 handles up to 1,100 picks per hour in tests at customer sites, compared with 800 for the previous model."
+       },
+       {
+        "source": "S1",
+        "quote": "Picker 3 is available to order now. First deliveries are planned for January 2027."
+       }
+      ]
+     },
+     {
+      "text": "Northwind said it raised €40 million in a Series B led by Halden Ventures, to fund a second Rotterdam assembly line and first sales and support teams outside Europe.",
+      "date": "2026-10-21",
+      "category": "money",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S4",
+        "quote": "has raised €40 million in a Series B round led by Halden Ventures, the company said on Wednesday."
+       },
+       {
+        "source": "S4",
+        "quote": "the money would pay for a second assembly line in Rotterdam and for the company's first sales and support teams outside Europe."
+       }
+      ]
+     },
+     {
+      "text": "The Netherlands Labour Authority confirmed it is reviewing an incident in which a worker was injured at a Tilburg site using Northwind robots. It called the review routine; no fault established.",
+      "date": "2026-10-15",
+      "category": "risk",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S5",
+        "quote": "The Netherlands Labour Authority is reviewing an incident in which a warehouse worker was injured at a site in Tilburg that uses robots made by Northwind Robotics, the authority confirmed."
+       },
+       {
+        "source": "S5",
+        "quote": "A spokesperson for the authority said the review was routine after any reported injury involving machinery and that no fault had been established."
+       }
+      ]
+     },
+     {
+      "text": "The blog dealwhispers.example reports, citing two unnamed people, that Northwind has held early talks with Larchmont Industrial about a possible sale. Neither company replied to requests for comment.",
+      "date": "2026-11-07",
+      "category": "other",
+      "confirmed": false,
+      "quotes": [
+       {
+        "source": "S6",
+        "quote": "There is chatter in Rotterdam that Northwind Robotics has held early talks with Larchmont Industrial about a possible sale."
+       },
+       {
+        "source": "S6",
+        "quote": "Two people who say they are close to the matter told this blog that the conversations are at an early stage and may come to nothing."
+       }
+      ]
+     },
+     {
+      "text": "Kestrel Freight will install 60 Northwind picking robots across four hubs in the Netherlands and Germany under a three-year agreement, after a six-month trial at Duisburg. Financial terms were not disclosed.",
+      "date": "2026-11-05",
+      "category": "partners",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S7",
+        "quote": "Kestrel Freight will install 60 Northwind Robotics picking robots across four of its hubs in the Netherlands and Germany under a three-year agreement announced on Thursday."
+       },
+       {
+        "source": "S7",
+        "quote": "It is the largest single order Northwind Robotics has announced."
+       }
+      ]
+     }
+    ],
+    "people": [
+     {
+      "text": "Northwind appointed Ilse Verhoeven, formerly finance director for northern Europe at Delta Parcel Group, as chief financial officer from 1 December. She replaces Tomas Riedel, who leaves at the end of November.",
+      "date": "2026-10-29",
+      "category": "people",
+      "confirmed": true,
+      "quotes": [
+       {
+        "source": "S8",
+        "quote": "Northwind Robotics has appointed Ilse Verhoeven as chief financial officer. She will start on 1 December."
+       },
+       {
+        "source": "S8",
+        "quote": "She replaces Tomas Riedel, who is leaving Northwind at the end of November after five years."
+       }
+      ]
+     }
+    ],
+    "conflicts": [
+     {
+      "note": "S4 says Northwind itself announced a €40 million Series B, while S3 reports a €45 million round citing two unnamed people, and Northwind declined to comment on the size.",
+      "sources": [
+       "S3",
+       "S4"
+      ]
+     }
+    ]
+   },
+   "tokensIn": 2892,
+   "tokensOut": 5275
+  },
+  "f368f44abe576b92db168145": {
+   "task": "verify",
+   "value": {
+    "checks": [
+     {
+      "id": "C1",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C2",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C3",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C4",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C5",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C6",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     },
+     {
+      "id": "C7",
+      "verdict": "supported",
+      "why": "",
+      "fix": ""
+     }
+    ]
+   },
+   "tokensIn": 3310,
+   "tokensOut": 710
+  },
+  "6e5cfca4c601ee7325d0a59c": {
+   "task": "compose",
+   "value": {
+    "glance": [
+     {
+      "text": "Northwind plans a Pune engineering and customer support office early next year, its first outside Europe, starting with about 25 staff.",
+      "refs": [
+       "C1"
+      ]
+     },
+     {
+      "text": "Picker 3 launched: up to 1,100 picks per hour in customer-site tests versus 800 previously; first deliveries planned for January 2027.",
+      "refs": [
+       "C2"
+      ]
+     },
+     {
+      "text": "Kestrel Freight will install 60 robots across four hubs under a three-year agreement, after a six-month trial at Duisburg.",
+      "refs": [
+       "C6"
+      ]
+     }
+    ],
+    "talking_points": [
+     {
+      "text": "Ask how the planned Pune engineering and support office, opening early next year with about 25 staff, would support a pilot in our warehouse.",
+      "refs": [
+       "C1"
+      ]
+     },
+     {
+      "text": "Ask whether a pilot would use Picker 3, given first deliveries are planned for January 2027, and how its soft-packaging gripper performs.",
+      "refs": [
+       "C2"
+      ]
+     },
+     {
+      "text": "Ask what the six-month Kestrel Freight trial at Duisburg involved and whether it is a model for a pilot with us.",
+      "refs": [
+       "C6"
+      ]
+     },
+     {
+      "text": "Raise the Netherlands Labour Authority's review of a worker injury at a Tilburg site; described as routine, no fault established. Ask about safety measures.",
+      "refs": [
+       "C4"
+      ]
+     }
+    ],
+    "open_questions": [
+     "Is the unconfirmed blog report of early sale talks with Larchmont Industrial accurate, and what would a sale mean for a pilot?",
+     "Was the Series B €40 million, as Northwind announced, or €45 million, as another source reported citing unnamed people?",
+     "What is the outcome and timing of the Labour Authority review of the Tilburg injury, and what caused the incident?",
+     "Can Northwind deliver and support robots in Pune on our pilot timeline, given the office is not yet open?"
+    ]
+   },
+   "tokensIn": 1200,
+   "tokensOut": 627
+  }
+ }
+}
