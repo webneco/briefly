@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-10",
+  "model": "claude-fable-5-2",
+  "rows": [
+    {
+      "subject": "Razorpay",
+      "kind": "company",
+      "seconds": 49,
+      "searches": 8,
+      "pagesRead": 5,
+      "credits": 9,
+      "tally": {
+        "drafted": 3,
+        "facts": 2,
+        "unconfirmed": 1,
+        "heldBack": 0,
+        "reworded": 1
+      },
+      "onPage": {
+        "facts": 2,
+        "unconfirmed": 1,
+        "heldBack": 0,
+        "words": 304,
+        "sources": 5
+      },
+      "heldBackReasons": [],
+      "tokensIn": 26532,
+      "tokensOut": 4503,
+      "quiet": false
+    },
+    {
+      "subject": "Zoho",
+      "kind": "company",
+      "seconds": 62,
+      "searches": 8,
+      "pagesRead": 8,
+      "credits": 10,
+      "tally": {
+        "drafted": 6,
+        "facts": 6,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "reworded": 0
+      },
+      "onPage": {
+        "facts": 6,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "words": 364,
+        "sources": 8
+      },
+      "heldBackReasons": [],
+      "tokensIn": 28817,
+      "tokensOut": 6109,
+      "quiet": false
+    },
+    {
+      "subject": "Nvidia",
+      "kind": "company",
+      "seconds": 120,
+      "searches": 8,
+      "pagesRead": 12,
+      "credits": 10,
+      "tally": {
+        "drafted": 8,
+        "facts": 8,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "reworded": 0
+      },
+      "onPage": {
+        "facts": 6,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "words": 393,
+        "sources": 7
+      },
+      "heldBackReasons": [],
+      "tokensIn": 39884,
+      "tokensOut": 12948,
+      "quiet": false
+    },
+    {
+      "subject": "Tavily",
+      "kind": "company",
+      "seconds": 36,
+      "searches": 8,
+      "pagesRead": 2,
+      "credits": 9,
+      "tally": {
+        "drafted": 2,
+        "facts": 2,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "reworded": 0
+      },
+      "onPage": {
+        "facts": 2,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "words": 250,
+        "sources": 2
+      },
+      "heldBackReasons": [],
+      "tokensIn": 12399,
+      "tokensOut": 3284,
+      "quiet": false
+    },
+    {
+      "subject": "Maxim AI",
+      "kind": "company",
+      "seconds": 44,
+      "searches": 8,
+      "pagesRead": 3,
+      "credits": 9,
+      "tally": {
+        "drafted": 3,
+        "facts": 3,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "reworded": 1
+      },
+      "onPage": {
+        "facts": 3,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "words": 227,
+        "sources": 3
+      },
+      "heldBackReasons": [],
+      "tokensIn": 16901,
+      "tokensOut": 4064,
+      "quiet": false
+    },
+    {
+      "subject": "Satya Nadella",
+      "kind": "person",
+      "seconds": 68,
+      "searches": 8,
+      "pagesRead": 12,
+      "credits": 10,
+      "tally": {
+        "drafted": 8,
+        "facts": 8,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "reworded": 1
+      },
+      "onPage": {
+        "facts": 6,
+        "unconfirmed": 0,
+        "heldBack": 0,
+        "words": 377,
+        "sources": 9
+      },
+      "heldBackReasons": [],
+      "tokensIn": 40430,
+      "tokensOut": 7049,
+      "quiet": false
+    }
+  ]
+}

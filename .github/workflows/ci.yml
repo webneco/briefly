@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --version
+      - run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Tests
+        run: npm test
+      - name: Recorded demo, no keys
+        run: npm run demo
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t briefly .
+      - name: Recorded demo inside the image
+        run: docker run --rm briefly node src/cli.ts --demo
+      - name: The web app starts and serves the recorded example
+        run: |
+          docker run -d --name briefly -p 8787:8787 briefly
+          for i in $(seq 1 20); do curl -fs localhost:8787/api/status && break; sleep 1; done
+          curl -fs -X POST localhost:8787/api/example | grep -q '"type":"done"'
+          docker rm -f briefly

@@ -1,0 +1,8 @@
+[
+  { "subject": "Razorpay", "kind": "company", "purpose": "Exploring a payments partnership" },
+  { "subject": "Zoho", "kind": "company", "purpose": "Vendor review of their CRM" },
+  { "subject": "Nvidia", "kind": "company", "purpose": "Quarterly supplier meeting" },
+  { "subject": "Tavily", "kind": "company", "hint": "AI search API company", "purpose": "Partnership call" },
+  { "subject": "Maxim AI", "kind": "company", "hint": "AI evaluation and observability platform, maker of the Bifrost gateway", "purpose": "Intro call" },
+  { "subject": "Satya Nadella", "kind": "person", "purpose": "Conference panel preparation" }
+]
