@@ -78,7 +78,7 @@ export async function pinSubject(req: BriefRequest, deps: Deps): Promise<EntityC
     '',
     'Rules:',
     '- name: the usual full name of the subject.',
-    `- summary: one sentence of at most 30 words on who or what this is${req.kind === 'person' ? ', including their current role and employer' : ''}. Use only what the results say.`,
+    `- summary: one sentence of at most 30 words on who or what this is${req.kind === 'person' ? ', including their current role and employer' : ': what it makes or does, and where it is based'}. Use only what the results say. Describe, do not report: no funding rounds, deals, launches, openings, appointments or dates. News goes in the brief, where every line is checked; this sentence is not checked.`,
     "- domain: the subject's own official website domain (for a person, their employer's), or null if the results do not show one.",
     '- aliases: up to 5 other names used for the subject in headlines: a short name, brand, ticker or former name. For a person, the family name alone only if it is distinctive. No generic words.',
     '- ambiguity: if the results show more than one company or person with this name, say in one sentence which one you chose and why. Otherwise null.',

@@ -97,6 +97,17 @@ export function toMarkdown(brief: Brief): string {
     out.push('');
     for (const c of brief.unverified) out.push(`- ${c.text}${cites(c)}  \n  Why held back: ${c.reason ?? 'no reason recorded'}`);
   }
+  if (brief.planted?.length) {
+    out.push('');
+    out.push('## Text aimed at AI readers');
+    out.push('');
+    out.push('Found on a source page and set aside before the brief was written, so nothing here rests on it. Some sites leave harmless notes for AI tools; a page that tells an AI what to write deserves a second look.');
+    out.push('');
+    for (const p of brief.planted) {
+      const s = brief.sources.find((x) => x.id === p.sourceId);
+      out.push(`- ${s ? s.domain : 'A source'} [${p.sourceId}]: “${p.excerpt}”`);
+    }
+  }
   if (brief.sources.length) {
     out.push('');
     out.push('## Sources');

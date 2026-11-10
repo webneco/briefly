@@ -209,3 +209,33 @@ export function similar(a: string, b: string): number {
   for (const w of wa) if (wb.has(w)) shared++;
   return shared / Math.min(wa.size, wb.size);
 }
+
+// Shapes that text aimed at an AI reader tends to take. A person reading the page is never
+// addressed as "AI assistants" or told to ignore their instructions.
+const PLANTED: RegExp[] = [
+  /\bignore (all |any |your |the )?(previous|prior|earlier|above|preceding) (instructions?|prompts?|directions?)\b/i,
+  /\b(disregard|forget|override)s? (all |any |your |the )?(previous|prior|earlier|above|system) (instructions?|prompts?|task)\b/i,
+  /\b(system|developer) (note|prompt|message|override)\b[^.\n]{0,60}\b(ai|assistants?|llms?|models?|chatbots?|agents?)\b/i,
+  /\b(note|notice|guidance|instructions?|message|attention|reminder)\b[^.:\n]{0,40}\b(for|to)\b[^.:\n]{0,24}\b(ai|llms?|language models?|chatbots?|assistants?|automated summari[sz]ers?|ai agents?|bots?)\b/i,
+  /\battention,? (llm|ai|assistant|chatbot|language model)s?\b/i,
+  /<!--[^>]{0,200}\b(assistant|ai|llm|instructions?|prompt)\b/i,
+  /^[ \t]*(human|user|assistant|system)[ \t]*:[ \t]*\S/im,
+  /\b(from|by) your (operator|developer|system administrator)\b/i,
+  /\bdo not (mention|reveal|disclose|repeat) this (note|instruction|message|notice)\b/i,
+  /\bwhen (you )?(summari[sz]e|describ(e|ing)|answer(ing)?)[^.\n]{0,60}\b(state|say|include|write|add|mention) (that|as|the)\b/i,
+];
+
+/**
+ * Finds passages on a page that are written to an AI reader: "ignore your previous
+ * instructions", a "note for AI assistants", a fake chat turn. Returns each passage once.
+ * It matches fixed shapes, so an instruction written as ordinary prose is not found here.
+ */
+export function plantedText(text: string): string[] {
+  const out: string[] = [];
+  for (const para of text.split(/\n{2,}/)) {
+    const p = para.trim();
+    if (p.length < 12) continue;
+    if (PLANTED.some((re) => re.test(p))) out.push(p);
+  }
+  return out;
+}

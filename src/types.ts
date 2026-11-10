@@ -113,6 +113,17 @@ export interface Claim {
   evidence: { sourceId: string; passage: string }[];
 }
 
+/** Text on a source page that speaks to an AI reader, not to a person. It is reported, never followed. */
+export interface PlantedText {
+  sourceId: string;
+  /** How the text opens, short enough to show on the page without repeating what it asks for. */
+  excerpt: string;
+  /** The passage as it stands on the page, shown when the reader asks to see it. */
+  passage: string;
+  /** "pattern": matched a fixed pattern. "model": reported by the model, then found on the page. */
+  foundBy: 'pattern' | 'model';
+}
+
 export interface Conflict {
   note: string;
   sourceIds: string[];
@@ -155,6 +166,8 @@ export interface Brief {
   talkingPoints: Line[];
   openQuestions: string[];
   unverified: Claim[];
+  /** Text on the pages that was aimed at AI readers. Usually empty. */
+  planted: PlantedText[];
   /** Sources cited by at least one claim on the page, without their full text. */
   sources: Omit<Source, 'text'>[];
   /** What happened to every drafted claim, before the page was trimmed to fit. */

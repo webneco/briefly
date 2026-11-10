@@ -190,6 +190,44 @@
       );
     }
 
+    if ((brief.planted || []).length) {
+      const list = el('ul');
+      for (const p of brief.planted) {
+        const source = brief.sources.find((s) => s.id === p.sourceId);
+        const li = el('li');
+        const show = el('button', { type: 'button', class: 'cite', 'aria-expanded': 'false', 'aria-label': `Source ${p.sourceId}. Show the text that was set aside.`, text: p.sourceId });
+        show.addEventListener('click', () => {
+          const open = li.querySelector('.proof');
+          if (open) {
+            open.remove();
+            show.setAttribute('aria-expanded', 'false');
+            return;
+          }
+          li.append(
+            el(
+              'div',
+              { class: 'proof' },
+              el('p', { class: 'from', text: `On the page at ${source ? source.domain : 'this source'}. Briefly did not follow it.` }),
+              el('p', {}, el('q', { text: p.passage })),
+              source ? el('p', { class: 'from' }, el('a', { href: source.url, target: '_blank', rel: 'noopener noreferrer', text: 'Open the page' })) : null,
+            ),
+          );
+          show.setAttribute('aria-expanded', 'true');
+        });
+        li.append(el('span', { text: `${source ? source.domain : 'A source'}: “${p.excerpt}”` }), show);
+        list.append(li);
+      }
+      sheet.append(
+        el(
+          'section',
+          { class: 'held planted' },
+          el('h3', { text: 'Text aimed at AI readers' }),
+          el('p', { class: 'why-all', text: 'Found on a source page and set aside before the brief was written, so nothing here rests on it. Some sites leave harmless notes for AI tools; a page that tells an AI what to write deserves a second look.' }),
+          list,
+        ),
+      );
+    }
+
     if (brief.sources.length) {
       sheet.append(
         heading('Sources'),

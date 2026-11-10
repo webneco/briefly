@@ -5,8 +5,8 @@ import { localToday, windowFor } from './dates.ts';
 import { chooseSources, gather, pinSubject, planSearches, readPages, triage } from './research.ts';
 import type { Deps } from './research.ts';
 import { wordCount } from './text.ts';
-import type { Brief, BriefRequest, Claim, Line, Model, Progress, Research, Source, StepTrace, Usage } from './types.ts';
-import { compose, draft, LIMITS, verify } from './writing.ts';
+import type { Brief, BriefRequest, Claim, Line, Model, PlantedText, Progress, Research, Source, StepTrace, Usage } from './types.ts';
+import { compose, draft, LIMITS, setAsidePlanted, verify } from './writing.ts';
 
 export interface RunOptions {
   research: Research;
@@ -86,22 +86,31 @@ export async function makeBrief(input: BriefRequest, opts: RunOptions): Promise<
     (s) => `${s.filter((x) => x.textFrom === 'page').length} pages read in full, ${s.filter((x) => x.textFrom === 'snippet').length} from the search snippet only.`,
   );
 
+  // Text aimed at AI readers is set aside before anything is written from the pages.
+  const first = setAsidePlanted(sources);
+
   const drafted = await step(
     'draft',
     'Drafting from the pages',
-    () => draft(req, entity, events, sources, window, deps),
+    () => draft(req, entity, events, first.sources, window, deps),
     (d) => `${d.claims.length} claims drafted, ${d.conflicts.length} disagreement${d.conflicts.length === 1 ? '' : 's'} between sources noted.`,
   );
+
+  // The drafting model may have spotted more of it. That goes too, before the checks run.
+  const second = setAsidePlanted(first.sources, drafted.planted);
+  const pages = second.sources;
+  const planted = [...first.notes, ...second.notes.filter((n) => !first.notes.some((x) => x.sourceId === n.sourceId))].slice(0, 3);
 
   const checked = await step(
     'verify',
     'Checking every claim against its source',
-    () => verify(req, entity, drafted.claims, sources, window, deps),
+    () => verify(req, entity, drafted.claims, pages, window, deps),
     (c) =>
       `${c.filter((x) => x.status === 'verified').length} passed` +
       (c.some((x) => x.reworded) ? ` (${c.filter((x) => x.reworded).length} after narrowing the wording to what the source states)` : '') +
       (c.some((x) => x.status === 'verified' && !x.confirmed) ? `, of which ${c.filter((x) => x.status === 'verified' && !x.confirmed).length} the source itself calls unconfirmed` : '') +
-      `; ${c.filter((x) => x.status === 'unverified').length} held back.`,
+      `; ${c.filter((x) => x.status === 'unverified').length} held back.` +
+      (planted.length ? ` Text aimed at AI readers was found on ${planted.length} page${planted.length === 1 ? '' : 's'} and set aside.` : ''),
   );
 
   const byDate = (a: Claim, b: Claim) => ((a.date ?? '') < (b.date ?? '') ? 1 : (a.date ?? '') > (b.date ?? '') ? -1 : a.rank - b.rank);
@@ -132,6 +141,7 @@ export async function makeBrief(input: BriefRequest, opts: RunOptions): Promise<
         ...talkingPoints.map((l) => l.text),
         ...openQuestions,
         ...unverified.flatMap((c) => [c.text, c.reason ?? '']),
+        ...planted.map((p) => p.excerpt),
       ].join(' '),
     );
   const trims: (() => boolean)[] = [
@@ -152,7 +162,7 @@ export async function makeBrief(input: BriefRequest, opts: RunOptions): Promise<
   glance = keepRefs(glance);
   talkingPoints = keepRefs(talkingPoints);
 
-  const cited = renumber([...developments, ...people, ...reported, ...unverified], sources);
+  const cited = renumber([...developments, ...people, ...reported, ...unverified], sources, planted);
 
   const brief: Brief = {
     request: req,
@@ -167,6 +177,7 @@ export async function makeBrief(input: BriefRequest, opts: RunOptions): Promise<
     talkingPoints,
     openQuestions,
     unverified,
+    planted,
     sources: cited,
     tally: {
       drafted: checked.length,
@@ -193,22 +204,25 @@ function dropLeast(list: Claim[]): Claim[] {
 
 /**
  * Renumbers sources 1, 2, 3 in the order the page first cites them, and returns only the
- * sources that are cited. Claims are updated to the new ids.
+ * sources that are cited. Claims and notices of planted text are updated to the new ids.
  */
-function renumber(claims: Claim[], sources: Source[]): Omit<Source, 'text'>[] {
+function renumber(claims: Claim[], sources: Source[], planted: PlantedText[] = []): Omit<Source, 'text'>[] {
   const byId = new Map(sources.map((s) => [s.id, s]));
   const fresh = new Map<string, string>();
   const out: Omit<Source, 'text'>[] = [];
-  for (const c of claims) {
-    for (const e of c.evidence) {
-      if (!fresh.has(e.sourceId)) {
-        const s = byId.get(e.sourceId);
-        if (!s) continue;
-        const id = String(out.length + 1);
-        fresh.set(e.sourceId, id);
-        out.push({ id, url: s.url, title: s.title, domain: s.domain, date: s.date, textFrom: s.textFrom });
-      }
-    }
+  const cite = (sourceId: string) => {
+    if (fresh.has(sourceId)) return;
+    const s = byId.get(sourceId);
+    if (!s) return;
+    const id = String(out.length + 1);
+    fresh.set(sourceId, id);
+    out.push({ id, url: s.url, title: s.title, domain: s.domain, date: s.date, textFrom: s.textFrom });
+  };
+  for (const c of claims) for (const e of c.evidence) cite(e.sourceId);
+  // A page with planted text is listed even when nothing on the brief rests on it.
+  for (const p of planted) {
+    cite(p.sourceId);
+    p.sourceId = fresh.get(p.sourceId) ?? p.sourceId;
   }
   for (const c of claims) {
     c.evidence = c.evidence.filter((e) => fresh.has(e.sourceId)).map((e) => ({ ...e, sourceId: fresh.get(e.sourceId)! }));
