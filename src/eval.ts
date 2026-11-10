@@ -23,6 +23,8 @@ interface Row {
   tokensIn?: number;
   tokensOut?: number;
   quiet?: boolean;
+  /** Pages on which text aimed at AI readers was found: domain and how the text opens. */
+  planted?: string[];
 }
 
 /** The reason text starts with a fixed phrase per check; group by it. */
@@ -63,6 +65,7 @@ async function main(): Promise<void> {
         tokensIn: b.usage.llmTokensIn,
         tokensOut: b.usage.llmTokensOut,
         quiet: b.quiet,
+        planted: b.planted.map((p) => `${b.sources.find((x) => x.id === p.sourceId)?.domain ?? 'a source'} (${p.foundBy}): ${p.excerpt}`),
       });
       process.stderr.write(`${b.tally.drafted} drafted, ${b.tally.facts} facts, ${b.tally.unconfirmed} unconfirmed, ${b.tally.heldBack} held back\n`);
     } catch (err) {
@@ -90,6 +93,7 @@ async function main(): Promise<void> {
     '',
     `${sum((r) => r.tally!.reworded)} of the claims that passed had first been narrowed by the checker to what the source states.`,
     Object.keys(reasons).length ? `Why claims were held back: ${Object.entries(reasons).map(([k, n]) => `${k} (${n})`).join(', ')}.` : 'No claim was held back.',
+    `Text aimed at AI readers was found on ${sum((r) => r.planted?.length ?? 0)} of the ${sum((r) => r.pagesRead!)} pages read.`,
     `Tavily credits used: ${sum((r) => r.credits!)}. Model tokens: ${sum((r) => r.tokensIn!).toLocaleString('en')} in, ${sum((r) => r.tokensOut!).toLocaleString('en')} out.`,
   ];
   mkdirSync(join(ROOT, 'eval'), { recursive: true });

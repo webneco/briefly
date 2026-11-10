@@ -16,5 +16,7 @@ They are built to exercise the checks:
 | `10-old-factory-news` | News from before the 30-day window. |
 | `11-pune-office-paywalled` | A page that cannot be read, so only the search snippet is available. |
 
+`npm run traps` gives these articles to a model with and without Briefly's checks, and swaps the planted instruction in `08` for five other kinds. See the main README.
+
 `model-tape.json` holds the model's replies from one real run over these articles. `npm run demo`
 replays it. `node src/cli.ts --demo --record` records it again with your own model key.

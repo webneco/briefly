@@ -13,6 +13,7 @@
     "brief": "node src/cli.ts",
     "demo": "node src/cli.ts --demo",
     "eval": "node src/eval.ts",
+    "traps": "node src/traps.ts",
     "test": "node --test \"test/*.test.ts\"",
     "typecheck": "tsc --noEmit"
   },

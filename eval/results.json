@@ -5,62 +5,64 @@
     {
       "subject": "Razorpay",
       "kind": "company",
-      "seconds": 49,
+      "seconds": 50,
       "searches": 8,
-      "pagesRead": 5,
+      "pagesRead": 4,
       "credits": 9,
       "tally": {
-        "drafted": 3,
-        "facts": 2,
-        "unconfirmed": 1,
+        "drafted": 6,
+        "facts": 3,
+        "unconfirmed": 3,
         "heldBack": 0,
         "reworded": 1
       },
       "onPage": {
-        "facts": 2,
-        "unconfirmed": 1,
+        "facts": 3,
+        "unconfirmed": 3,
         "heldBack": 0,
-        "words": 304,
-        "sources": 5
+        "words": 405,
+        "sources": 4
       },
       "heldBackReasons": [],
-      "tokensIn": 26532,
-      "tokensOut": 4503,
-      "quiet": false
+      "tokensIn": 21561,
+      "tokensOut": 4238,
+      "quiet": false,
+      "planted": []
     },
     {
       "subject": "Zoho",
       "kind": "company",
-      "seconds": 62,
+      "seconds": 55,
       "searches": 8,
-      "pagesRead": 8,
-      "credits": 10,
+      "pagesRead": 6,
+      "credits": 9,
       "tally": {
-        "drafted": 6,
-        "facts": 6,
+        "drafted": 5,
+        "facts": 5,
         "unconfirmed": 0,
         "heldBack": 0,
         "reworded": 0
       },
       "onPage": {
-        "facts": 6,
+        "facts": 5,
         "unconfirmed": 0,
         "heldBack": 0,
-        "words": 364,
-        "sources": 8
+        "words": 333,
+        "sources": 6
       },
       "heldBackReasons": [],
-      "tokensIn": 28817,
-      "tokensOut": 6109,
-      "quiet": false
+      "tokensIn": 25485,
+      "tokensOut": 5348,
+      "quiet": false,
+      "planted": []
     },
     {
       "subject": "Nvidia",
       "kind": "company",
-      "seconds": 120,
+      "seconds": 86,
       "searches": 8,
-      "pagesRead": 12,
-      "credits": 10,
+      "pagesRead": 11,
+      "credits": 11,
       "tally": {
         "drafted": 8,
         "facts": 8,
@@ -72,44 +74,50 @@
         "facts": 6,
         "unconfirmed": 0,
         "heldBack": 0,
-        "words": 393,
-        "sources": 7
+        "words": 397,
+        "sources": 5
       },
       "heldBackReasons": [],
-      "tokensIn": 39884,
-      "tokensOut": 12948,
-      "quiet": false
+      "tokensIn": 35826,
+      "tokensOut": 9069,
+      "quiet": false,
+      "planted": []
     },
     {
       "subject": "Tavily",
       "kind": "company",
-      "seconds": 36,
+      "seconds": 49,
       "searches": 8,
-      "pagesRead": 2,
+      "pagesRead": 5,
       "credits": 9,
       "tally": {
-        "drafted": 2,
-        "facts": 2,
+        "drafted": 4,
+        "facts": 3,
         "unconfirmed": 0,
-        "heldBack": 0,
+        "heldBack": 1,
         "reworded": 0
       },
       "onPage": {
-        "facts": 2,
+        "facts": 3,
         "unconfirmed": 0,
-        "heldBack": 0,
-        "words": 250,
-        "sources": 2
+        "heldBack": 1,
+        "words": 367,
+        "sources": 4
       },
-      "heldBackReasons": [],
-      "tokensIn": 12399,
-      "tokensOut": 3284,
-      "quiet": false
+      "heldBackReasons": [
+        "source does not back it"
+      ],
+      "tokensIn": 18928,
+      "tokensOut": 4038,
+      "quiet": false,
+      "planted": [
+        "docs.tavily.com (model): Documentation Index Fetch the complete documentation index at:</llms.txt Use this file to discover all …"
+      ]
     },
     {
       "subject": "Maxim AI",
       "kind": "company",
-      "seconds": 44,
+      "seconds": 53,
       "searches": 8,
       "pagesRead": 3,
       "credits": 9,
@@ -124,39 +132,41 @@
         "facts": 3,
         "unconfirmed": 0,
         "heldBack": 0,
-        "words": 227,
+        "words": 277,
         "sources": 3
       },
       "heldBackReasons": [],
-      "tokensIn": 16901,
-      "tokensOut": 4064,
-      "quiet": false
+      "tokensIn": 17324,
+      "tokensOut": 4703,
+      "quiet": false,
+      "planted": []
     },
     {
       "subject": "Satya Nadella",
       "kind": "person",
-      "seconds": 68,
+      "seconds": 63,
       "searches": 8,
-      "pagesRead": 12,
+      "pagesRead": 11,
       "credits": 10,
       "tally": {
-        "drafted": 8,
-        "facts": 8,
+        "drafted": 7,
+        "facts": 7,
         "unconfirmed": 0,
         "heldBack": 0,
         "reworded": 1
       },
       "onPage": {
-        "facts": 6,
+        "facts": 7,
         "unconfirmed": 0,
         "heldBack": 0,
-        "words": 377,
-        "sources": 9
+        "words": 386,
+        "sources": 7
       },
       "heldBackReasons": [],
-      "tokensIn": 40430,
-      "tokensOut": 7049,
-      "quiet": false
+      "tokensIn": 33216,
+      "tokensOut": 5990,
+      "quiet": false,
+      "planted": []
     }
   ]
 }
